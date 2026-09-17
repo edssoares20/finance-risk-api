@@ -34,7 +34,11 @@ class PortfolioAnalysisService:
         )
 
         # Ticker que não existe volta como coluna 100% NaN, não como erro.
-        missing = [t for t in weights if t not in prices.columns or prices[t].isna().all()]
+        missing = [
+            t
+            for t in weights
+            if t not in prices.columns or bool(prices[t].isna().all())
+        ]
         if missing:
             raise UnknownTickerError(tickers=missing)
 
