@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import datetime, timedelta, timezone
 
 from app.core.config import settings
 from app.core.exceptions import InsufficientDataError, UnknownTickerError
@@ -23,7 +23,7 @@ class PortfolioAnalysisService:
 
     async def analyze(self, request: PortfolioRequest) -> RiskAnalysisResponse:
         weights = {a.ticker: float(a.weight) for a in request.assets}
-        end = date.today()
+        end = datetime.now(timezone.utc).date()
         # +40% de folga no calendário: 252 pregões ≈ 365 dias corridos.
         start = end - timedelta(days=int(request.lookback_days * 1.4))
 

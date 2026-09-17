@@ -49,7 +49,7 @@ class PortfolioAnalysis(Base):
     # em vez de varrer as posições. É a base da Tarefa 1 (cache).
     fingerprint: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
 
-    positions: Mapped[list["AnalysisPosition"]] = relationship(
+    positions: Mapped[list[AnalysisPosition]] = relationship(
         back_populates="analysis",
         cascade="all, delete-orphan",
         # lazy="selectin" evita o problema N+1 E o erro de lazy-load em
@@ -76,7 +76,7 @@ class AnalysisPosition(Base):
     weight: Mapped[float] = mapped_column(Float, nullable=False)
     risk_contribution: Mapped[float] = mapped_column(Float, nullable=False)
 
-    analysis: Mapped["PortfolioAnalysis"] = relationship(back_populates="positions")
+    analysis: Mapped[PortfolioAnalysis] = relationship(back_populates="positions")
 
     # Mesmo ticker duas vezes na mesma análise é dado corrompido.
     # O Pydantic já barra na entrada, mas a integridade no banco é a

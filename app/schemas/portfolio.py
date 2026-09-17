@@ -32,10 +32,10 @@ class PortfolioRequest(BaseModel):
             raise ValueError(f"Tickers duplicados: {', '.join(sorted(dups))}")
 
         total = sum(a.weight for a in self.assets)
-        if abs(total - Decimal("1")) > TOLERANCE:
+        if abs(total - Decimal(1)) > TOLERANCE:
             raise ValueError(
                 f"Os pesos devem somar 1.0 (100%). Soma recebida: {total}. "
-                f"Diferença: {total - Decimal('1')}"
+                f"Diferença: {total - Decimal(1)}"
             )
         return self
 

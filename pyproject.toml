@@ -1,0 +1,2 @@
+[tool.ruff.lint]
+ignore = ["B008"]  # Depends() em valor padrão é o padrão idiomático do FastAPI
