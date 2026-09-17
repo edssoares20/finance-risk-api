@@ -9,7 +9,7 @@
 [![Pandas](https://img.shields.io/badge/Pandas-2.2-150458?style=flat-square&logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
 
-**[🚀 Demo ao vivo](https://finance-risk-api-ostg.onrender.com/docs)**git 
+[**🚀 Demo ao vivo**](https://finance-risk-api-ostg.onrender.com/docs)
 
 > ⏱️ A demo roda no plano gratuito do Render e hiberna após 15 min de inatividade. A primeira requisição pode levar ~60s para acordar o serviço.
 
