@@ -138,7 +138,7 @@ MIT
 
 ## 👤 Autor
 
-Edson da Mota Soares Neto — Estudante de Engenharia · UFBA
+Edson Soares — Estudante de Engenharia · UFBA
 
 [GitHub](https://github.com/edssoares20)
 
