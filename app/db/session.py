@@ -1,10 +1,18 @@
 from collections.abc import AsyncGenerator
+from pathlib import Path
 
 from sqlalchemy import event
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from app.core.config import settings
 from app.db.models import Base
+
+# SQLite não cria a pasta sozinho — se ela não existir, a conexão falha.
+# No Render, o filesystem começa vazio (a pasta data/ fica fora do Git
+# de propósito), então precisamos garantir que ela exista antes de conectar.
+if settings.DATABASE_URL.startswith("sqlite"):
+    db_file = settings.DATABASE_URL.split("///")[-1]
+    Path(db_file).parent.mkdir(parents=True, exist_ok=True)
 
 engine = create_async_engine(
     settings.DATABASE_URL,          # sqlite+aiosqlite:///./data/finance.db
